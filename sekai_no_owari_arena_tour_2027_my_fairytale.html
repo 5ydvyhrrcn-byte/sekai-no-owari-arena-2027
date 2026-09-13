@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#162d35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="セカオワ参戦">
+<title>SEKAI NO OWARI ARENA TOUR 2027</title>
+
+<style>
+:root{
+  --ink:#443b46; --muted:#827487; --gold:#a8834d; --line:#e4d5df;
+  --paper:#fffafd; --pink:#f5dfe9; --lav:#e9e1f5; --blue:#dfeef2;
+  --rose:#a95f79; --night:#35324f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#292740}
+body{
+ margin:0;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+ color:var(--ink);
+ background:
+ radial-gradient(circle at 15% 10%,rgba(255,255,255,.9) 0 2px,transparent 3px),
+ radial-gradient(circle at 82% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+ radial-gradient(circle at 55% 48%,rgba(255,255,255,.65) 0 1.5px,transparent 2.5px),
+ linear-gradient(180deg,#eee7f5 0%,#fffafd 34%,#f8f0f7 100%);
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+ -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:760px;margin:auto;padding:0 13px 48px}
+.hero{
+ min-height:66vh;display:flex;align-items:center;justify-content:center;
+ position:relative;overflow:hidden;margin:0 -13px 28px;
+ background:
+ radial-gradient(circle at 50% 42%,rgba(255,251,253,.98) 0 18%,rgba(255,251,253,.72) 30%,rgba(255,251,253,0) 53%),
+ linear-gradient(180deg,#34314e 0%,#55506e 48%,#e6d8e5 100%);
+ border-bottom-left-radius:48% 5%;border-bottom-right-radius:48% 5%;
+}
+.hero:before,.hero:after{
+ content:"";position:absolute;top:-6%;bottom:-4%;width:43%;
+ background:linear-gradient(180deg,#e5c3cf 0%,#c7839b 38%,#7b4b68 100%);
+ opacity:.92;box-shadow:0 10px 25px rgba(45,35,55,.22);
+}
+.hero:before{left:-12%;border-radius:0 0 65% 20%;transform:rotate(5deg)}
+.hero:after{right:-12%;border-radius:0 0 20% 65%;transform:rotate(-5deg)}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:45px 24px}
+.stars{font-size:24px;letter-spacing:12px;color:#fff4c8;text-shadow:0 0 9px #fff;margin-bottom:18px}
+.kicker{letter-spacing:.32em;font-size:11px;color:#67556a;margin-bottom:13px}
+.title{
+ margin:0;font-family:Georgia,"Times New Roman",serif;
+ font-size:clamp(62px,19vw,112px);line-height:.82;font-weight:400;
+ color:#a95f79;text-shadow:2px 3px 0 rgba(255,255,255,.75);
+}
+.subtitle{
+ margin-top:2px;font-family:Georgia,"Times New Roman",serif;
+ font-size:clamp(31px,9.5vw,58px);color:#4e5d68;font-weight:300;
+}
+.personal{
+ display:inline-block;margin-top:22px;padding:9px 18px;border-radius:999px;
+ background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);
+ color:#76566c;font-size:13px;letter-spacing:.08em;
+ box-shadow:0 5px 18px rgba(80,55,80,.12);
+}
+.section-title{
+ text-align:center;color:#9b7650;font-family:Georgia,serif;
+ letter-spacing:.12em;font-size:13px;margin:31px 0 13px;
+}
+.section-title:before{content:"✦  "}
+.section-title:after{content:"  ✦"}
+.card,.hotel{
+ position:relative;background:rgba(255,252,254,.88);
+ border:1px solid var(--line);border-radius:22px;
+ padding:27px 17px 23px;margin:15px 0;
+ box-shadow:0 5px 18px rgba(78,56,82,.07);
+ overflow:hidden;
+}
+.card:before{
+ content:"";position:absolute;right:-20px;top:-24px;width:80px;height:80px;
+ background:var(--lav);border-radius:50%;opacity:.55;
+}
+.card:after{
+ content:"✦";position:absolute;right:17px;top:13px;color:#c49bb1;font-size:16px;
+}
+.area{text-align:center;color:#9a7751;font-size:13px;margin:0 0 6px;font-weight:600}
+.venue{text-align:center;font-size:26px;font-weight:700;margin:0 0 18px;letter-spacing:.03em}
+.event{border-top:1px dashed #ddcfda;padding:16px 4px 3px;text-align:center}
+.event+.event{margin-top:3px}
+.date{font-family:Georgia,"Yu Mincho",serif;font-size:21px;font-weight:700}
+.time{margin-top:5px;color:var(--muted);font-size:14px}
+.badge{
+ display:inline-block;margin-top:11px;padding:5px 12px;border-radius:999px;
+ font-size:11px;letter-spacing:.06em;background:#f2dce7;color:#874e69;
+}
+.countdown{
+ text-align:center;margin:25px 0 28px;padding:27px 14px;
+ border:1px solid var(--line);border-radius:22px;
+ background:rgba(255,255,255,.72);box-shadow:0 5px 18px rgba(78,56,82,.06);
+}
+.count-label{font-family:Georgia,serif;color:#a17b55;letter-spacing:.16em;font-size:12px}
+.next-name{font-size:18px;font-weight:700;margin:9px 0 14px}
+.clock{display:flex;justify-content:center;gap:7px}
+.unit{min-width:64px;padding:9px 4px;border-radius:15px;background:#f6eef6}
+.num{font-family:Georgia,serif;font-size:30px;line-height:1;font-weight:700;color:#67546f}
+.unit small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+.hotel h3{text-align:center;font-family:Georgia,serif;font-size:23px;margin:0 0 17px;color:#67536c}
+.hotel-row{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px dashed #e2d7df;font-size:13px}
+.hotel-row:last-child{border-bottom:0}
+.hotel-row span:first-child{color:var(--muted)}
+.hotel-row span:last-child{text-align:right;font-weight:600}
+.notice{margin-top:14px;padding:13px 12px;background:#f4e5dc;border-radius:13px;text-align:center;color:#7b504b;font-size:12px;line-height:1.7}
+.message{
+ text-align:center;padding:20px 14px;color:#766579;font-family:Georgia,"Yu Mincho",serif;
+ font-size:14px;line-height:1.9;
+}
+.top{display:block;text-align:center;margin-top:18px;font-size:12px;color:#806d7d;text-decoration:none}
+.footer{text-align:center;color:#9a8796;font-size:10px;letter-spacing:.08em;margin-top:30px}
+@media(max-width:430px){
+ .hero{min-height:57vh}.venue{font-size:24px}.date{font-size:20px}
+ .clock{gap:4px}.unit{min-width:58px}.num{font-size:29px}
+}
+</style>
+
+</head>
+<body id="top">
+<div class="wrap">
+<section class="hero"><div class="hero-inner"><div class="stars">✦ ･ﾟ✧ ･ﾟ✦</div><div class="kicker">SEKAI NO OWARI</div><h1 class="title">2027</h1><div class="subtitle">Arena Tour</div><div class="personal">わたしの ARENA TOUR 2027 ✦</div></div></section>
+
+<div class="countdown"><div class="count-label">NEXT LIVE</div><div class="next-name" id="nextName">次の公演まで</div><div class="clock"><div class="unit"><div class="num" id="days">--</div><small>日</small></div><div class="unit"><div class="num" id="hours">--</div><small>時間</small></div><div class="unit"><div class="num" id="minutes">--</div><small>分</small></div><div class="unit"><div class="num" id="seconds">--</div><small>秒</small></div></div></div>
+
+<div class="message">ここは、あなたのための小さな舞台。<br>6つの夜を、ひとつずつ楽しみに待とうね。</div><div class="section-title">MY LIVE SCHEDULE</div>
+<article class="card"><div class="area">神奈川</div><h2 class="venue">ぴあアリーナMM</h2><div class="event"><div class="date">2027年5月16日（日）</div><div class="time">OPEN 16:00 / START 17:00</div><span class="badge">参戦</span></div></article>
+<article class="card"><div class="area">東京</div><h2 class="venue">国立代々木競技場<br>第一体育館</h2><div class="event"><div class="date">2027年6月19日（土）</div><div class="time">OPEN 17:00 / START 18:00</div><span class="badge">参戦・1日目</span></div></article>
+<article class="card"><div class="area">静岡</div><h2 class="venue">静岡エコパアリーナ</h2><div class="event"><div class="date">2027年6月26日（土）</div><div class="time">OPEN 17:00 / START 18:00</div><span class="badge">参戦</span></div><div class="event"><div class="date">2027年6月27日（日）</div><div class="time">OPEN 16:00 / START 17:00</div><span class="badge">参戦</span></div></article>
+<article class="card"><div class="area">神奈川</div><h2 class="venue">Kアリーナ横浜</h2><div class="event"><div class="date">2027年7月23日（金）</div><div class="time">OPEN 17:30 / START 19:00</div><span class="badge">参戦</span></div><div class="event"><div class="date">2027年7月25日（日）</div><div class="time">OPEN 15:30 / START 17:00</div><span class="badge">参戦</span></div></article>
+
+<div class="section-title">STAY IN SHIZUOKA</div>
+<section class="hotel"><h3>エコパ遠征・宿泊</h3>
+<div class="hotel-row"><span>ホテル</span><span>ハタゴイン静岡吉田インター</span></div>
+<div class="hotel-row"><span>宿泊</span><span>2027/6/26（土）〜6/28（月）</span></div>
+<div class="hotel-row"><span>人数・部屋</span><span>大人2名・1室<br>ツイン禁煙</span></div>
+<div class="hotel-row"><span>プラン</span><span>早割プラン28・素泊まり</span></div>
+<div class="hotel-row"><span>合計</span><span>19,520円</span></div>
+<div class="notice">キャンセル無料：2027年6月24日（木）23:59まで<br>期限前にお知らせする予定だよ</div></section>
+<a class="top" href="#top">↑ TOPへ</a><div class="footer">SEKAI NO OWARI · ARENA TOUR 2027</div>
+</div>
+<script>
+const events=[
+{date:"2027-05-16T17:00:00+09:00",name:"ぴあアリーナMM"},
+{date:"2027-06-19T18:00:00+09:00",name:"国立代々木競技場 第一体育館"},
+{date:"2027-06-26T18:00:00+09:00",name:"静岡エコパアリーナ"},
+{date:"2027-06-27T17:00:00+09:00",name:"静岡エコパアリーナ"},
+{date:"2027-07-23T19:00:00+09:00",name:"Kアリーナ横浜"},
+{date:"2027-07-25T17:00:00+09:00",name:"Kアリーナ横浜"}];
+function updateCountdown(){
+ const now=new Date(),next=events.find(e=>new Date(e.date)>now);
+ if(!next){document.getElementById("nextName").textContent="全公演終了！";return}
+ const diff=new Date(next.date)-now;
+ document.getElementById("nextName").textContent=next.name;
+ document.getElementById("days").textContent=Math.floor(diff/86400000);
+ document.getElementById("hours").textContent=String(Math.floor(diff/3600000)%24).padStart(2,"0");
+ document.getElementById("minutes").textContent=String(Math.floor(diff/60000)%60).padStart(2,"0");
+ document.getElementById("seconds").textContent=String(Math.floor(diff/1000)%60).padStart(2,"0");
+}
+updateCountdown();setInterval(updateCountdown,1000);
+</script>
+</body></html>
